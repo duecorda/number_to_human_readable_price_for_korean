@@ -1,2 +1,11 @@
-# number_to_human_readable_price_for_korean
-숫자를 한국어 가격 표기로 변환합니다
+# 숫자를 한국어 가격 표기로 변환합니다.
+813 Bytes 에 불과한 펑션 하나입니다.
+'일천만, 일백만' 등 자연스럽지 않은 '일(1)' 표기는 제외됩니다.
+
+예)
+9082 > 구천팔십이원
+234238 > 이십삼만 사천이백삼십팔원
+189010 > 십팔만 구천십원 ~~일십팔만 구천십원~~
+
+[온라인 데모]
+https://www.w3schools.com/code/tryit.asp?filename=GJSAPR9B3GGU
