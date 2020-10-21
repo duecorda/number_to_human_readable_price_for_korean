@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>test for number_to_human_readable</title>
+    <script src="./number_to_human_readable.js"></script>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 0.25rem 0.5rem;
+      }
+      strong {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>데모</h1>
+
+    <p>숫자를 한국어 가격 표기로 변환합니다</p>
+    <label for="price">가격입력</label>
+    <input id="price"/>
+    <button id="convert">변환</button>
+    <span id="result"></span>
+
+    <script>
+      let trigger = document.querySelector('#convert');
+      trigger.addEventListener('click', function() {
+        let v = document.querySelector('input#price').value;
+        let nv = number_to_human_readable(v);
+        document.querySelector('#result').innerHTML = nv;
+      });
+    </script>
+
+    <h1>테스트</h1>
+
+    <div id="data">
+      <strong>테스트셋</strong>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>숫자값</th>
+          <th>예상값</th>
+          <th>결과값</th>
+          <th>결과</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tbody>
+    </table>
+
+    <script>
+      function delimiter(n) {
+        return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+      }
+      (function() {
+        var data = [
+          [100, "백원"],
+          [7032, "칠천삼십이원"],
+          [3000000, "삼백만원"],
+          [9000000000, "구십억원"],
+          [10000100000, "백억 십만원"],
+          [80199320, "팔천십구만 구천삼백이십원"]
+        ];
+        document.querySelector("#data").insertAdjacentHTML('beforeend', data.join("<br/>"));
+        
+        var container = document.querySelector("tbody");
+        for(var i=0;i<data.length;i++) {
+          var html = "<tr><td>:input:</td><td>:expect:</td><td>:output:</td><td>:result:</td></tr>";
+          var dat = data[i];
+          var ret = number_to_human_readable(dat[0]);
+          html = html.replace(/:input:/, delimiter(dat[0]));
+          html = html.replace(/:expect:/, dat[1]);
+          html = html.replace(/:output:/, ret);
+          html = html.replace(/:result:/, String(dat[1] == ret));
+          container.insertAdjacentHTML("beforeend", html);
+        }
+      })();
+    </script>
+
+  </body>
+</html>
