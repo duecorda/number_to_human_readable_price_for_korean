@@ -13,7 +13,3 @@
 
 189010 > 십팔만 구천십원 ~~일십팔만 구천십원~~
 
-
-[온라인 데모]
-
-https://www.w3schools.com/code/tryit.asp?filename=GJSAPR9B3GGU
