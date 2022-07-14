@@ -1,5 +1,5 @@
 function number_to_human_readable(price) {
-  let digits = String(price).trim().split('').reverse().join('');
+  let digits = String(price).trim().replace(/[^0-9]/g,'').split().reverse().join('');
   if(digits.length <= 0) return '0원';
 
   const price_units = ['','만','억','조','경','해','자','양','구','간','정','재','극','항하사','아승기','나유타','불가사의','무량대수'];
